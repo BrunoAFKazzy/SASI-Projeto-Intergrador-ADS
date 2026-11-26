@@ -1,1 +1,1 @@
-# SASI-SISTEMA-DE-ATENDIMENTO-INTELIGENTE-E-SIMULA-O-DE-INVESTIMENTO
+O presente projeto abrange o estudo de caso da BG Mídia, concessionária de mídia exterior digital (OOH/DOOH — Out of Home / Digital Out of Home) especializada na operação de painéis de LED de alta visibilidade, com 25 anos de atuação no município de Osasco/SP. A solução proposta busca sanar deficiências críticas observadas nas etapas de prospecção, qualificação inicial de anunciantes e negociação comercial dos espaços publicitários digitais. 
