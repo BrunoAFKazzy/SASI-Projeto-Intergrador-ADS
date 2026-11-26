@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("=====================================================");
+        System.out.println("     SISTEMA SASI - BG MÍDIA & QUALIFICAÇÃO DE LEADS   ");
+        System.out.println("=====================================================");
+        System.out.print("Informe o nome do seu negócio em Osasco: ");
+        String nomeCliente = scanner.nextLine();
+
+        int loopAtendimento = 1;
+
+        while (loopAtendimento == 1) {
+            System.out.println("\n----------------------------------------------------");
+            System.out.println("Olá, " + nomeCliente + "! Escolha o nível de visibilidade desejado:");
+            System.out.println("1 - Pacote Ouro (450 exib/dia/tela) - Máxima Cobertura");
+            System.out.println("2 - Pacote Prata (300 exib/dia/tela) - Média/Alta Frequência");
+            System.out.println("3 - Pacote Bronze (200 exib/dia/tela) - Frequência Intermediária");
+            System.out.println("4 - Pacote Start (150 exib/dia/tela) - Entrada para Pequeno Lojista");
+            System.out.print("Digite a opção desejada (1 a 4): ");
+            
+            int opcao = scanner.nextInt();
+
+            int insercoesDiaPorTela = 0;
+            double valorMensal = 0.0;
+            String nomePacote = "";
+
+            // Estrutura de decisão para ancoragem de preço
+            if (opcao == 1) {
+                nomePacote = "Ouro";
+                insercoesDiaPorTela = 450;
+                valorMensal = 8000.00;
+            } else if (opcao == 2) {
+                nomePacote = "Prata";
+                insercoesDiaPorTela = 300;
+                valorMensal = 5800.00;
+            } else if (opcao == 3) {
+                nomePacote = "Bronze";
+                insercoesDiaPorTela = 200;
+                valorMensal = 4000.00;
+            } else if (opcao == 4) {
+                nomePacote = "Start";
+                insercoesDiaPorTela = 150;
+                valorMensal = 3100.00;
+            } else {
+                System.out.println("\n[ERRO] Opção inválida. Tente novamente.");
+                continue;
+            }
+
+            // Cálculos lógicos do sistema
+            int totalTelas = 10; // 5 painéis dupla face no Calçadão de Osasco
+            int insercoesDiariasTotais = insercoesDiaPorTela * totalTelas;
+            int insercoesMensaisTotais = insercoesDiariasTotais * 30;
+            double custoPorInsercao = valorMensal / insercoesMensaisTotais;
+            double investimentoDiario = valorMensal / 30.0;
+
+            // Exibição da Proposta (Simulador Interativo)
+            System.out.println("\n=====================================================");
+            System.out.println("          PROPOSTA DE INVESTIMENTO - BG MÍDIA        ");
+            System.out.println("=====================================================");
+            System.out.println("Cliente: " + nomeCliente);
+            System.out.println("Pacote Selecionado: " + nomePacote);
+            System.out.println("Pontos de Exibição: 5 Painéis Dupla Face (10 Telas)");
+            System.out.println("Total de Exibições por Dia: " + insercoesDiariasTotais + " vezes/dia");
+            System.out.println("Total de Exibições no Mês: " + insercoesMensaisTotais + " inserções");
+            System.out.printf("Investimento Diário Equivalente: R$ %.2f\n", investimentoDiario);
+            System.out.printf("CUSTO REAL POR INSERÇÃO: R$ %.4f (Apenas centavos por exibição!)\n", custoPorInsercao);
+            System.out.println("----------------------------------------------------");
+            
+            System.out.print("\nDeseja encaminhar esta proposta para o consultor? (1 - Sim / 0 - Trocar Plano): ");
+            int confirmacao = scanner.nextInt();
+
+            if (confirmacao == 1) {
+                System.out.println("\n[SUCESSO] Proposta gerada! Encaminhando " + nomeCliente + " para o WhatsApp do Consultor de Vendas...");
+                loopAtendimento = 0; // Encerra o loop e finaliza o atendimento
+            } else {
+                System.out.println("\nRetornando ao menu de pacotes para nova simulação...");
+            }
+        }
+        
+        scanner.close();
+    }
+}
